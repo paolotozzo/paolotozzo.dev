@@ -277,6 +277,7 @@ p {
 .timeline-item p,
 .business-intro p,
 .principles-grid p,
+.strengths-list p,
 .contact-copy p,
 .legal-content p {
   color: var(--muted);
@@ -311,6 +312,37 @@ p {
 .business-facts strong {
   display: block;
   font-size: 1rem;
+}
+
+.strengths-section {
+  width: 100%;
+  max-width: none;
+  padding-inline: max(20px, calc((100vw - var(--max)) / 2));
+  background: #e8ebe7;
+}
+
+.strengths-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(34px, 6vw, 84px);
+  align-items: start;
+}
+
+.strengths-list {
+  display: grid;
+  border-top: 1px solid rgba(21, 22, 23, 0.18);
+}
+
+.strengths-list article {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.42fr) minmax(0, 0.58fr);
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(21, 22, 23, 0.18);
+}
+
+.strengths-list h3 {
+  margin: 0;
 }
 
 .principles-section {
@@ -472,8 +504,14 @@ p {
   .business-grid,
   .contact-section,
   .timeline,
+  .strengths-layout,
   .principles-grid {
     grid-template-columns: 1fr;
+  }
+
+  .strengths-list article {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .timeline-item,

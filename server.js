@@ -1,9 +1,12 @@
 const path = require("path");
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 const { Resend } = require("resend");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.set("trust proxy", 1);
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const contactFrom = process.env.CONTACT_FROM || "Paolo Tozzo <contact@paolotozzo.dev>";
@@ -24,7 +27,15 @@ app.use(express.static(path.join(__dirname), { extensions: ["html"] }));
 const isEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 const clamp = (value, max) => String(value || "").trim().slice(0, max);
 
-app.post("/api/contact", async (req, res) => {
+const contactLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { ok: false, error: "Too many messages from this address. Please try again later." },
+});
+
+app.post("/api/contact", contactLimiter, async (req, res) => {
   const { name, email, message, company } = req.body || {};
 
   if (company) {

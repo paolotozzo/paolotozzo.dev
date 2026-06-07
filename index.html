@@ -20,7 +20,9 @@
     <meta property="og:url" content="https://paolotozzo.dev/" />
     <meta
       property="og:image"
-      content="https://paolotozzo.dev/assets/automation-systems-hero.png" />
+      content="https://paolotozzo.dev/assets/automation-systems-hero.jpg" />
+    <meta property="og:image:width" content="1774" />
+    <meta property="og:image:height" content="887" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Paolo Tozzo | Independent Software Engineer" />
     <meta
@@ -28,7 +30,7 @@
       content="Independent software engineer in Varna, Bulgaria, building automation and AI-enabled software systems." />
     <meta
       name="twitter:image"
-      content="https://paolotozzo.dev/assets/automation-systems-hero.png" />
+      content="https://paolotozzo.dev/assets/automation-systems-hero.jpg" />
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
@@ -76,14 +78,32 @@
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
-        <img
-          class="hero-image"
-          src="assets/automation-systems-hero.png"
-          alt="Abstract AI automation and payment system interface"
-          width="1774"
-          height="887"
-          fetchpriority="high"
-          decoding="async" />
+        <picture>
+          <source
+            type="image/avif"
+            sizes="100vw"
+            srcset="
+              assets/automation-systems-hero-900.avif 900w,
+              assets/automation-systems-hero.avif 1774w" />
+          <source
+            type="image/webp"
+            sizes="100vw"
+            srcset="
+              assets/automation-systems-hero-900.webp 900w,
+              assets/automation-systems-hero.webp 1774w" />
+          <img
+            class="hero-image"
+            src="assets/automation-systems-hero.jpg"
+            sizes="100vw"
+            srcset="
+              assets/automation-systems-hero-900.jpg 900w,
+              assets/automation-systems-hero.jpg 1774w"
+            alt="Abstract AI automation and payment system interface"
+            width="1774"
+            height="887"
+            fetchpriority="high"
+            decoding="async" />
+        </picture>
         <canvas class="hero-canvas" aria-hidden="true"></canvas>
         <div class="hero-shade" aria-hidden="true"></div>
         <div class="hero-content">

@@ -1,0 +1,13 @@
+{
+  "name": "paolotozzo",
+  "version": "1.0.0",
+  "description": "Personal website for Paolo Tozzo.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "node --check script.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true
+}

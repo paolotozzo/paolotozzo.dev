@@ -12,6 +12,7 @@
 
   const form = document.getElementById("contact-form");
   if (form) {
+    const status = document.getElementById("form-status");
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const data = new FormData(form);
@@ -25,6 +26,13 @@
         ].join("\n"),
       );
       window.location.href = `mailto:info@paolotozzo.dev?subject=${subject}&body=${body}`;
+
+      if (status) {
+        status.hidden = false;
+        status.innerHTML =
+          'Your email app should open with the message ready to send. ' +
+          'If nothing happens, email <a href="mailto:info@paolotozzo.dev">info@paolotozzo.dev</a> directly.';
+      }
     });
   }
 
@@ -58,6 +66,8 @@
     }));
   };
 
+  let rafId = null;
+
   const draw = () => {
     frame += 0.012;
     context.clearRect(0, 0, width, height);
@@ -89,10 +99,26 @@
       context.fill();
     });
 
-    requestAnimationFrame(draw);
+    rafId = requestAnimationFrame(draw);
+  };
+
+  const start = () => {
+    if (rafId === null) rafId = requestAnimationFrame(draw);
+  };
+
+  const stop = () => {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
   };
 
   resize();
   window.addEventListener("resize", resize);
-  draw();
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) start();
+    else stop();
+  });
+  observer.observe(canvas);
 })();

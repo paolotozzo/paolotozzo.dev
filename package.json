@@ -7,7 +7,7 @@
     "start": "npx serve .",
     "test": "node --check script.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Paolo Tozzo <info@paolotozzo.dev>",
+  "license": "UNLICENSED",
   "private": true
 }

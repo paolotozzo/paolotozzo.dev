@@ -7,10 +7,60 @@
     <meta
       name="description"
       content="Paolo Tozzo is an independent software engineer in Varna, Bulgaria, building automation and AI-enabled software systems." />
+    <meta name="author" content="Paolo Tozzo" />
     <meta name="theme-color" content="#101214" />
+    <link rel="canonical" href="https://paolotozzo.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Paolo Tozzo" />
+    <meta property="og:title" content="Paolo Tozzo | Independent Software Engineer" />
+    <meta
+      property="og:description"
+      content="Independent software engineer in Varna, Bulgaria, building automation and AI-enabled software systems." />
+    <meta property="og:url" content="https://paolotozzo.dev/" />
+    <meta
+      property="og:image"
+      content="https://paolotozzo.dev/assets/automation-systems-hero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Paolo Tozzo | Independent Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Independent software engineer in Varna, Bulgaria, building automation and AI-enabled software systems." />
+    <meta
+      name="twitter:image"
+      content="https://paolotozzo.dev/assets/automation-systems-hero.png" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Paolo Tozzo",
+        "jobTitle": "Independent Software Engineer",
+        "url": "https://paolotozzo.dev",
+        "email": "info@paolotozzo.dev",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Varna",
+          "addressCountry": "BG"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/paolo-tozzo-36015aa/",
+          "https://github.com/paolotozzo"
+        ],
+        "knowsAbout": [
+          "AI automation",
+          "SaaS software",
+          "Integrations",
+          "Payment systems"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-elevate>
       <a class="brand" href="index.html" aria-label="Paolo Tozzo home">
         <span class="brand-mark" aria-hidden="true">PT</span>
@@ -24,12 +74,16 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <img
           class="hero-image"
           src="assets/automation-systems-hero.png"
-          alt="Abstract AI automation and payment system interface" />
+          alt="Abstract AI automation and payment system interface"
+          width="1774"
+          height="887"
+          fetchpriority="high"
+          decoding="async" />
         <canvas class="hero-canvas" aria-hidden="true"></canvas>
         <div class="hero-shade" aria-hidden="true"></div>
         <div class="hero-content">
@@ -75,8 +129,9 @@
         </div>
       </section>
 
-      <section id="work" class="section work-section">
+      <section id="work" class="section work-section" aria-labelledby="work-title">
         <div class="section-kicker">Experience</div>
+        <h2 id="work-title">Two decades of building software.</h2>
         <div class="timeline">
           <article class="timeline-item">
             <span class="timeline-date">Since 1999</span>
@@ -241,6 +296,7 @@
             <textarea name="message" rows="5" required></textarea>
           </label>
           <button class="button primary" type="submit">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
         </form>
       </section>
     </main>

@@ -24,7 +24,7 @@
           data.get("message") || "",
         ].join("\n"),
       );
-      window.location.href = `mailto:paolo@paolotozzo.dev?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:info@paolotozzo.dev?subject=${subject}&body=${body}`;
     });
   }
 

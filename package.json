@@ -2,12 +2,17 @@
   "name": "paolotozzo",
   "version": "1.0.0",
   "description": "Personal website for Paolo Tozzo.",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "start": "npx serve .",
-    "test": "node --check script.js"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --check script.js && node --check server.js"
   },
   "author": "Paolo Tozzo <info@paolotozzo.dev>",
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^5.1.0",
+    "resend": "^4.6.0"
+  }
 }

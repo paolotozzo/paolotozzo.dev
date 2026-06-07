@@ -446,6 +446,14 @@ p {
   width: max-content;
 }
 
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-status {
   margin: 0;
   padding: 12px 14px;
@@ -455,6 +463,10 @@ p {
   background: #fbfaf6;
   color: #373a3d;
   font-size: 0.92rem;
+}
+
+.form-status[data-state="error"] {
+  border-left-color: var(--wine);
 }
 
 .form-status a {

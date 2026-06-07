@@ -13,25 +13,58 @@
   const form = document.getElementById("contact-form");
   if (form) {
     const status = document.getElementById("form-status");
-    form.addEventListener("submit", (event) => {
+    const button = form.querySelector("button[type='submit']");
+
+    const setStatus = (message, state) => {
+      if (!status) return;
+      status.hidden = false;
+      status.dataset.state = state;
+      status.innerHTML = message;
+    };
+
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const data = new FormData(form);
-      const subject = encodeURIComponent("Message from paolotozzo.dev");
-      const body = encodeURIComponent(
-        [
-          `Name: ${data.get("name") || ""}`,
-          `Email: ${data.get("email") || ""}`,
-          "",
-          data.get("message") || "",
-        ].join("\n"),
-      );
-      window.location.href = `mailto:info@paolotozzo.dev?subject=${subject}&body=${body}`;
+      const payload = {
+        name: data.get("name") || "",
+        email: data.get("email") || "",
+        message: data.get("message") || "",
+        company: data.get("company") || "",
+      };
 
-      if (status) {
-        status.hidden = false;
-        status.innerHTML =
-          'Your email app should open with the message ready to send. ' +
-          'If nothing happens, email <a href="mailto:info@paolotozzo.dev">info@paolotozzo.dev</a> directly.';
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Sending…";
+      }
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.ok) {
+          form.reset();
+          setStatus("Thanks — your message has been sent. I'll get back to you soon.", "success");
+        } else {
+          setStatus(
+            (result.error || "Message could not be sent.") +
+              ' You can email <a href="mailto:info@paolotozzo.dev">info@paolotozzo.dev</a> directly.',
+            "error",
+          );
+        }
+      } catch (err) {
+        setStatus(
+          'Network error. Please email <a href="mailto:info@paolotozzo.dev">info@paolotozzo.dev</a> directly.',
+          "error",
+        );
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Send message";
+        }
       }
     });
   }

@@ -198,6 +198,13 @@ a:hover {
   margin-top: 34px;
 }
 
+.hero-trust {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
 .button {
   display: inline-flex;
   min-height: 46px;
@@ -384,6 +391,14 @@ p {
   min-height: 230px;
   border-top: 4px solid var(--teal);
   padding: 26px;
+}
+
+.process-grid span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--amber-ink);
+  font-size: 0.82rem;
+  font-weight: 850;
 }
 
 .contact-section {
